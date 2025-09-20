@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bruno Ferreira Santos</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #1a1a1a, #121212);
+      color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 50px 35px;
+      border-radius: 20px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+      text-align: center;
+      max-width: 400px;
+      width: 90%;
+      backdrop-filter: blur(12px);
+      animation: fadeIn 1.2s ease-out forwards;
+      opacity: 0;
+      transform: translateY(40px);
+      position: relative;
+    }
+
+    .container::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      z-index: -1;
+      background: linear-gradient(45deg, #00f0ff, #00ffc8, #0099ff, #00f0ff);
+      background-size: 600% 600%;
+      border-radius: 22px;
+      animation: borderGlow 10s ease infinite;
+    }
+
+    .profile-pic {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      border: 4px solid #ffffff33;
+      object-fit: cover;
+      margin-bottom: 25px;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .profile-pic:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 15px #00fff2aa;
+    }
+
+    h1 {
+      font-size: 1.9rem;
+      margin-bottom: 10px;
+    }
+
+    .typing {
+      font-size: 1rem;
+      color: #ccc;
+      min-height: 60px;
+      margin-top: 10px;
+      white-space: pre-line;
+      line-height: 1.5;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes borderGlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @media (max-width: 500px) {
+      .container {
+        padding: 35px 25px;
+      }
+
+      h1 {
+        font-size: 1.6rem;
+      }
+
+      .typing {
+        font-size: 0.95rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Usando sua imagem chamada perfil.jpeg -->
+    <img
+      src="perfil.jpeg"
+      alt="Bruno Ferreira Santos"
+      class="profile-pic"
+    />
+    <h1>Bruno Ferreira Santos</h1>
+    <div class="typing" id="typing"></div>
+  </div>
+
+  <script>
+    const text = `Consultor Lotérico com ampla experiência no setor de gestão de casas lotéricas.
+Estudante de Ciências Contábeis, com foco em compliance, finanças e eficiência operacional.
+Apaixonado por transformar processos em resultados.`;
+
+    const typingElement = document.getElementById('typing');
+    let index = 0;
+
+    function typeWriter() {
+      if (index < text.length) {
+        typingElement.innerHTML += text.charAt(index);
+        index++;
+        setTimeout(typeWriter, 25); // Velocidade de digitação
+      }
+    }
+
+    window.onload = typeWriter;
+  </script>
+</body>
+</html>
